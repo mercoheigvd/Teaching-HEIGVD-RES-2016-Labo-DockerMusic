@@ -12,7 +12,7 @@ TCPServ.on('connection', function(socket) {
 	socket.pipe(socket);
 	
 	// Check every "registered" musician:
-    // if it hasn't played for 5 minutes, remove it from table (1 for test)
+    // if it hasn't played for 5 seconds, remove it from table
     musicians.forEach(function(musician) {
 	  if(moment().diff(musician.time, 'seconds') >= 5) {
 		console.log("A musician playing " + musician.instrument + " has been deleted");
