@@ -8,13 +8,13 @@ var TCPServ = net.createServer();
 
 /* TCP Server configuration */
 TCPServ.on('connection', function(socket) {
-	socket.write("Welcome in the concert hall !\r\n");
+	//socket.write("Welcome in the concert hall !\r\n");
 	socket.pipe(socket);
 	
 	// Check every "registered" musician:
     // if it hasn't played for 5 minutes, remove it from table (1 for test)
     musicians.forEach(function(musician) {
-	  if(moment().diff(musician.time, 'seconds') >= 10) {
+	  if(moment().diff(musician.time, 'seconds') >= 5) { // Time reduced because of the validation (should be 10)
 		console.log("A musician playing " + musician.instrument + " has been deleted");
 		musicians.delete(musician.uuid);
 	  }
